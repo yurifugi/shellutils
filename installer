@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# must run with sudo
+
+for sh in *.sh
+do
+    echo
+    echo "Applying +x permission to ${sh} ..."
+    chmod --verbose +x "${sh}"
+    echo
+    echo "Copying ${sh} to /usr/local/bin ..."
+    cp --force --verbose "${sh}" /usr/local/bin/
+    echo
+done
+
+echo "Installer done."
