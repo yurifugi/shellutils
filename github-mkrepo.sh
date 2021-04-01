@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e 
 
-GITHUB_USERNAME=$1
-REPOSITORY_NAME=$2
+GITHUB_USERNAME="$1"
+REPOSITORY_NAME="$2"
 
 
-if test -z $GITHUB_USERNAME 
+if test -z "$GITHUB_USERNAME" 
 then
     echo 'github-mkrepo.sh 
 Create a new Github repository 
@@ -16,7 +16,7 @@ github-mkrepo.sh GITHUB_USERNAME REPOSITORY_NAME'
       exit 1
 fi
 
-if test -z $REPOSITORY_NAME 
+if test -z "$REPOSITORY_NAME" 
 then
     echo 'github-mkrepo.sh 
 Create a new Github repository 
@@ -29,7 +29,7 @@ fi
 
 echo "Github username: $GITHUB_USERNAME"
 echo "Github repository name: $REPOSITORY_NAME"
-curl -u $GITHUB_USERNAME https://api.github.com/user/repos -d '{"name":"'$REPOSITORY_NAME'"}'
+curl -u "$GITHUB_USERNAME" https://api.github.com/user/repos -d '{"name":"'$REPOSITORY_NAME'"}'
 
 echo "
 
