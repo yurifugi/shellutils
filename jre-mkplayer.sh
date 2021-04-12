@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 # jre-mkplayer.sh
-# Generate a htm file with the Spotify player for the JRE episode passed on command run
-
-
+# Generate a htm file with the Spotify player for the JRE episode 
+# You must pass the episode id during command execution
 
 # set -x
 
@@ -17,10 +16,8 @@ then
 fi
 
 
-HTML="<p><iframe src="https://open.spotify.com/embed-podcast/episode/videoidhere" width="1080" height="2160" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></p>"
+HTML="<p><iframe src=\"https://open.spotify.com/embed-podcast/episode/$1\" width=\"1080\" height=\"2160\" frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"></iframe></p>"
 echo "$HTML" > "$1".htm
-
-sed -i "s/videoidhere/$1/" "$1".htm
 
 # echo "param1=$1"
 # echo "HTML=$HTML"
