@@ -6,7 +6,7 @@ pen="/mnt/pen"
 for i in *.mkv;
 do
     printf "\n MKV: %s\n" "$i"
-    ffmpeg -i "$i" 2>&1 |grep -iE "stream||title"
+    ffmpeg -i "$i" -f null 2>&1 | grep -iE "stream||title"
 done
 
 # Converts audio track to ac3
