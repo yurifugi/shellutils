@@ -38,7 +38,6 @@ Generate a htm file with the Spotify player for the JRE episode passed on comman
 jre-mkplayer.sh EpIsoDe1d
 ```
 
-
 ## myip.sh
 
 Fetch your valid IP address from web services. Store it on a file.
@@ -49,9 +48,33 @@ Fetch your valid IP address from web services. Store it on a file.
 myip.sh
 ```
 
+## mkv-x.sh
+
+MKV Extractor. From a mkv file:
+- Converts audio track to ac3;
+- Copy only one subtitle track;
+- Copy only one video track;
+- Copies to a mounted pen drive.
+
+### Usage
+
+```bash
+mkv-x.sh
+```
+
+## mount-pen.sh
+
+Yes, I'm lazy. This one simply mounts /dev/sdb1 to /mnt/pen
+
+### Usage
+
+```bash
+mount-pen.sh
+```
+
 ## video-info.sh
 
-Extract info from a video file (mkv, avi).
+Extract info from a video file (mkv, avi) into columns.
 
 ```bash
 video-info.sh
