@@ -2,6 +2,14 @@
 
 pen="/mnt/pen"
 
+if mountpoint -q "$pen" 
+then
+   :
+else
+   echo "$pen is not mounted."
+   exit 1
+fi
+
 # Listing streams
 for i in *.mkv;
 do
@@ -30,3 +38,5 @@ do
         -c:a ac3 \
         -c:s copy "$pen/$i"
 done
+
+df -kh |grep "$pen" | awk '{printf("\n%s in %s capacity: %s. Free:  %s.\n", $1, $6, $2, $4) }'
