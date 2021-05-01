@@ -14,7 +14,7 @@ echo "Getting past JRE episodes..."
 curl "$SHOWURL" --output "$TMPFILE" --silent
 xmllint --nowarning --html "$TMPFILE" 2>/dev/null  |grep  -E 'track-name|tracklist-row' |head -20 | grep -oE 'href.*|\#.*' | cut -d\< -f1
 rm -f "$TMPFILE"
-printf "\n\nEpisode id?"
+printf "\n\nEpisode id? > "
 read -r "EPISODEID" 
 
 PLAYERFILE="$EPISODEID.htm"

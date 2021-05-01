@@ -48,7 +48,7 @@ Fetch your valid IP address from web services. Store it on a file.
 myip.sh
 ```
 
-## mkv-x.sh
+## mkv2ac3.sh
 
 MKV Extractor. From a mkv file:
 - Converts audio track to ac3;
@@ -59,7 +59,7 @@ MKV Extractor. From a mkv file:
 ### Usage
 
 ```bash
-mkv-x.sh
+mkv2ac3.sh
 ```
 
 ## mount-pen.sh
