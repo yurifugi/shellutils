@@ -62,14 +62,14 @@ MKV Extractor. From a mkv file:
 mkv2ac3.sh
 ```
 
-## mount-pen.sh
+## pen-mnt.sh
 
 Yes, I'm lazy. This one simply mounts /dev/sdb1 to /mnt/pen
 
 ### Usage
 
 ```bash
-mount-pen.sh
+pen-mnt.sh
 ```
 
 ## video-info.sh
