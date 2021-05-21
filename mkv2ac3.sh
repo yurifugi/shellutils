@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-pen="/mnt/pen"
+#pen="/mnt/pen"
+
+printf "\nPen is: (/some/folder/)> "
+read -r pen
 
 if mountpoint -q "$pen" 
 then
