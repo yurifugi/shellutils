@@ -2,6 +2,8 @@
 
 #pen="/mnt/pen"
 
+lsblk -f -o NAME,MOUNTPOINT
+
 printf "\nPen is: (/some/folder/)> "
 read -r pen
 
