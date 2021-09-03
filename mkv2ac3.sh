@@ -49,13 +49,16 @@ ffprobe \
     -of csv=p=0 \
     "$1"
 
+printf "n\All's good? <y/n>"
+read CONTINUE
 
-
-# ffmpeg -i "$1" \
-#     -map 0:a:"$audioTrack" \
-#     -map 0:s:"$subTrack" \
-#     -map 0:v:"$videoTrack" \
-#     -c:v copy \
-#     -c:a ac3 \
-#     -c:s copy "$DEST/$1"
-
+if [[ $CONTINUE == "y" ]]
+then 
+    ffmpeg -i "$1" \
+        -map 0:a:"$audioTrack" \
+        -map 0:s:"$subTrack" \
+        -map 0:v:"$videoTrack" \
+        -c:v copy \
+        -c:a ac3 \
+        -c:s copy "$DEST/$1"
+fi
