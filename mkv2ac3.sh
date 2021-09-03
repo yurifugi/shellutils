@@ -1,26 +1,19 @@
 #!/usr/bin/env bash
 
-#pen="/mnt/pen"
+MEDIAMNT=$(lsblk -f -o NAME,MOUNTPOINT -l |grep media)
 
-lsblk -f -o NAME,MOUNTPOINT
+echo "Device    MountPoint"
+echo "$MEDIAMNT"
 
-printf "\nPen is: (/some/folder/)> "
-read -r pen
+ls -la $(echo "$MEDIAMNT" | awk '{ print $2 }')
 
-if mountpoint -q "$pen" 
-then
-   :
-else
-   echo "$pen is not mounted."
-   exit 1
-fi
+printf "\nDestination: (/some/folder/)> "
+read -r DEST
+
 
 # Listing streams
-for i in *.mkv;
-do
-    printf "\n MKV: %s\n" "$i"
-    ffmpeg -i "$i" -f null 2>&1 | grep -iE "stream||title"
-done
+ffmpeg -i "$1" -f null 2>&1 | grep -iE "stream||title"
+
 
 # Converts audio track to ac3
 # Copy only the specified subtitle and video tracks
@@ -32,16 +25,37 @@ read -r audioTrack
 printf "\nSubtitle Track is? (zero based)> "
 read -r subTrack
 
-for i in *.mkv;
-do
-    echo "MKV: $i"
-    ffmpeg -i "$i" \
-        -map 0:a:"$audioTrack" \
-        -map 0:s:"$subTrack" \
-        -map 0:v:"$videoTrack" \
-        -c:v copy \
-        -c:a ac3 \
-        -c:s copy "$pen/$i"
-done
+printf "\nVideo:\n"
+ffprobe \
+    -hide_banner \
+    -v panic \
+    -select_streams v:"$videoTrack" \
+    -show_entries stream \
+    "$1" | grep lang
 
-df -kh |grep "$pen" | awk '{printf("\n%s in %s capacity: %s. Free:  %s.\n", $1, $6, $2, $4) }'
+printf "\nAudio:\n"
+ffprobe \
+    -hide_banner \
+    -v panic \
+    -select_streams a:"$audioTrack" \
+    -show_entries stream \
+    "$1" | grep lang
+
+printf "\nSubtitle:\n"
+ffprobe \
+    -loglevel error \
+    -select_streams s:24 \
+    -show_entries stream=index:stream_tags=language,title \
+    -of csv=p=0 \
+    "$1"
+
+
+
+# ffmpeg -i "$1" \
+#     -map 0:a:"$audioTrack" \
+#     -map 0:s:"$subTrack" \
+#     -map 0:v:"$videoTrack" \
+#     -c:v copy \
+#     -c:a ac3 \
+#     -c:s copy "$DEST/$1"
+
