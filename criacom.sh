@@ -5,7 +5,7 @@
 # Dependencia: sudo apt install imagemagick-6.q16
 # Uso 
 
-set +x
+set -x
 
 
 if [[ ! "$1" ]] || [[ ! -f "$2" ]] || [[ ! -f "$3" ]]
@@ -21,14 +21,15 @@ fi
 IMGNAME="$1"
 LOGONAME="$2"
 TXTNAME="$3"
-WIDTH=650
+WIDTH=700
 BGCOLOR="#68007F"
+FONTCOLOR="white"
 
 fold -s -w80 "$TXTNAME" > "new-$TXTNAME"
 mv -f "new-$TXTNAME" "$TXTNAME"
 
 TXTLINES=$(wc -l < "$TXTNAME")
-HEIGHT=$(expr "$TXTLINES" '*' 15 + 300 )
+HEIGHT=$(expr "$TXTLINES" '*' 17 + 300 )
 # pointsize 15 = ~15 pixels por linha de texto
 
 convert "$LOGONAME" -resize 20000@  "resized-$LOGONAME"
@@ -41,12 +42,12 @@ LOGOPOSHEIGHT=$(expr "$HEIGHT" - "$LOGOHEIGHT" )
 convert \
     -size "$WIDTH"x"$HEIGHT" xc:"$BGCOLOR"  \
     -font helvetica \
-    -pointsize 25 \
-    -fill white \
+    -pointsize 23 \
+    -fill "$FONTCOLOR" \
         -draw "text +30,+100 '#AdministraçãoSalesforce'" \
     -font helvetica \
-    -pointsize 20 \
-    -fill white \
+    -pointsize 17 \
+    -fill "$FONTCOLOR" \
         -annotate +30+200 "@$TXTNAME" "$IMGNAME"
 
 composite \
