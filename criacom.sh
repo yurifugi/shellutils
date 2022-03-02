@@ -22,8 +22,27 @@ IMGNAME="$1"
 LOGONAME="$2"
 TXTNAME="$3"
 WIDTH=700
-BGCOLOR="#68007F"
-FONTCOLOR="white"
+
+echo -e "@0\n\nWhich color scheme?"
+echo -e "1 Fundo laranja com fonte azul"
+echo -e "2 Fundo azul com fonte laranja"
+echo -e "3 Fundo azul com fonte laranja"
+read -n1 COLORSCHEME
+
+case "$COLORSCHEME" in
+    1)
+        #BGCOLOR="#68007F"
+        BGCOLOR="#FF5733"
+        FONTCOLOR="#250EB6"
+        ;;
+    2) 
+        BGCOLOR="#250EB6"
+        FONTCOLOR="#FF5733"
+        ;;
+    *)
+        echo -n "unknown"
+        ;;
+esac        
 
 fold -s -w80 "$TXTNAME" > "new-$TXTNAME"
 mv -f "new-$TXTNAME" "$TXTNAME"
