@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-IMG_EXT=(jpg jpeg pnd webp)
+IMG_EXT=(jpg jpeg png webp)
 
 for EXTENSION in "${IMG_EXT[@]}"
 do
