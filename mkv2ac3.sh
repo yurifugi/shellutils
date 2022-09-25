@@ -103,6 +103,9 @@ then
         -c:v copy \
         -c:a ac3 \
         -c:s copy "$2/$1"
+        
+        chmod a+w -Rv ./*
+
 else
     echo
     echo "Something went wrong." 
