@@ -16,7 +16,7 @@ do
     chmod --verbose +x "${sh}"
     echo
     echo "Copying ${sh} to /usr/local/bin ..."
-    ln --verbose --symbolic "$PWD/${sh}" /usr/local/bin/"${sh}"
+    ln --force --verbose --symbolic "$PWD/${sh}" /usr/local/bin/"${sh}"
     echo
 done
 
