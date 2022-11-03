@@ -20,7 +20,7 @@ do
     echo
     ffprobe -i "$1" -hide_banner 2>&1 | grep -i "video" | nl -v0
     echo
-    echo "Video Track is? \(zero based\)> "
+    echo "Video Track is? (zero based)> "
     read -r videoTrack
     echo
     echo "Video Track will be:"
@@ -50,7 +50,7 @@ do
     echo
     ffprobe -i "$1" -hide_banner 2>&1 | grep -i "audio" | nl -v0
     echo
-    echo "Audio Track is? \(zero based\)> "
+    echo "Audio Track is? (zero based)> "
     read -r audioTrack
     echo
     echo "Audio Track will be:"
@@ -75,11 +75,11 @@ do
     echo "Destination will be: 'conv-$1'."
     echo "Origin is '$1'."
     echo 
-    echo "Listing Subtitle Streams \(and its titles\) from '$1'"
+    echo "Listing Subtitle Streams (and its titles) from '$1'"
     echo
     ffprobe -i "$1" -hide_banner 2>&1 | grep -iE "subtitle|title" | nl -v0 -bpStream
     echo
-    echo "Subtitle Track is? \(zero based\)> "
+    echo "Subtitle Track is? (zero based)> "
     read -r subTrack
     echo
     echo "Subtitle Track will be:"
