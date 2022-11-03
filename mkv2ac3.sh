@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-if [ ! $# -ge 2 ]
+if [ ! $# -ge 1 ]
 then
-    echo "Usage: $0 \"filename.[avi,mkv]\" \"/destination/folder/\""
+    echo "Usage: $0 \"filename.[avi,mkv]\"
+    # echo "Usage: $0 \"filename.[avi,mkv]\" \"/destination/folder/\""
     exit 1
 fi
 
@@ -12,8 +13,8 @@ do
     clear
     echo "######## $0"
     echo
-    echo "Destination will be: '$2$1'."
-    echo "Origin is '$(pwd)/$1'."
+    echo "Destination will be: 'conv-$1'."
+    echo "Origin is '$1'."
     echo 
     echo "Listing Video Streams from '$1'"
     echo
@@ -42,8 +43,8 @@ do
     clear
     echo "######## $0"
     echo
-    echo "Destination will be: '$2$1'."
-    echo "Origin is '$(pwd)/$1'."
+    echo "Destination will be: 'conv-$1'."
+    echo "Origin is '$1'."
     echo 
     echo "Listing Audio Streams from '$1'"
     echo
@@ -71,8 +72,8 @@ do
     clear
     echo "######## $0"
     echo
-    echo "Destination will be: '$2$1'."
-    echo "Origin is '$(pwd)/$1'."
+    echo "Destination will be: 'conv-$1'."
+    echo "Origin is '$1'."
     echo 
     echo "Listing Subtitle Streams (and its titles) from '$1'"
     echo
@@ -102,9 +103,10 @@ then
         -map 0:v:"$videoTrack" \
         -c:v copy \
         -c:a ac3 \
-        -c:s copy "$2/$1"
+        -c:s copy "conv-$1"
+        RETVAL="$?"
         
-        chmod a+w -Rv "$2"
+        chmod a+w -Rv "conv-$1"
 
 else
     echo
@@ -115,3 +117,16 @@ else
 
 fi
 
+if [[ $RETVAL = "0" ]]
+then 
+    echo "ffmpeg RETVAL = 0"
+    echo "Delete origin? <y,n>"
+    read -n1 DELORIGIN
+    if [[ $DELORIGIN = "y" ]]
+    then
+        rm -fv "$1"
+    fi
+else
+    echo "ffmpeg !RETVAL = 0"
+    echo "something went wrong."
+fi
