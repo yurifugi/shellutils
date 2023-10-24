@@ -24,3 +24,8 @@ else
     /usr/bin/echo "$HDD2TBMOUNTPOINT is not a mountpoint"
     /usr/bin/echo "Aborting."
 fi
+
+# todo keep only X backup files
+#cd 
+#find . -name "*.dat" -mtime -2 -print
+
