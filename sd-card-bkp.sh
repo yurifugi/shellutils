@@ -19,10 +19,11 @@ if /usr/bin/mountpoint -q "$HDD_FOLDER"
 then
     /usr/bin/logger -p local0.notice -t sd-card-bkp Starting sd-card-bkp.sh
 
-    /usr/bin/dd bs=4M \
+    { 
+        /usr/bin/dd bs=4M \
         if="$SD_DEV" \
-        | /usr/bin/gzip -9 "$HDD_FOLDER/$BKP_FOLDER/$BKP_FILE" 2>&1 \
-        | /usr/bin/logger -p local0.notice -t sd-card-bkp
+        | /usr/bin/gzip -9 > "$HDD_FOLDER/$BKP_FOLDER/$BKP_FILE" 2>&1
+    } | /usr/bin/logger -p local0.notice -t sd-card-bkp
 
     /usr/bin/logger -p local0.notice -t sd-card-bkp Finished sd-card-bkp.sh
 
