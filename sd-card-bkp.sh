@@ -26,12 +26,17 @@ then
 
     /usr/bin/logger -p local0.notice -t sd-card-bkp.sh Finished 
 
+    NUMFILES=$(/usr/bin/find "$HDD_FOLDER/$BKP_FOLDER/" -type f | /usr/bin/wc -l)
+
+    if [[ $NUMFILES -gt 3 ]]
+    then
+        /usr/bin/find "$HDD_FOLDER/$BKP_FOLDER/" -type f -mtime +3 -delete 
+    fi
 
 else
     /usr/bin/logger -p local0.notice -t sd-card-bkp.sh Aborted no HDD is mounted
 fi
 
-# todo keep only X backup files
-#    /usr/bin/find "$HDD_FOLDER/$BKP_FOLDER/" -type f -mtime +3 -delete 
+
 
 
