@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo -e "$(sshpass \
-        -p "39JMjnFKVK4GGt6" ssh \
+        -p "$1" ssh \
         -o StrictHostKeyChecking=no \
         admin@10.1.1.1 \
         ip -s link show vlan1  | \
