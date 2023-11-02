@@ -10,4 +10,4 @@ echo $(date --iso-8601=seconds;\
         sed -n 3,4p | \
         sed 's/^[ \t]*//' | \
         cut -d" " -f1 | \
-        xargs) > /mnt/sda1/stats/router-internet.csv
+        xargs) >> /mnt/sda1/stats/router-internet.csv
