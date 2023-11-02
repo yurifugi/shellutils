@@ -9,5 +9,4 @@ echo $(date --iso-8601=seconds;\
         grep -v bytes | \
         sed -n 3,4p | \
         sed 's/^[ \t]*//' | \
-        cut -d" " -f1 | \
-        xargs) >> /mnt/sda1/stats/router-internet.csv
+        cut -d" " -f1) >> /mnt/sda1/stats/router-internet.csv
