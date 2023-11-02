@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-echo $(date --iso-8601=seconds;\
-    sshpass \
+echo $(sshpass \
         -p "$1" ssh \
         -o StrictHostKeyChecking=no \
         admin@10.1.1.1 \
