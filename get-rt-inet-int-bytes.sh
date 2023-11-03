@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# this is a script for using MRTG with Asus RT-AC59U
+# mrtg.conf shoud be:
+# Title[router_10_1_1_1]: "Title"
+# Target[router_10_1_1_1]: `/usr/local/bin/get-rt-inet-int-bytes.sh password` 
+# MaxBytes[router_10_1_1_1]: 1073741824
+
+# this script will return the 4 lines at the end of this script
+
+
 PASSWORD=$1
 
 ROUTER_RETURN=$(sshpass \
