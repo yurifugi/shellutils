@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+PASSWORD=$1
+
 ROUTER_RETURN=$(sshpass \
         -p "$PASSWORD" ssh \
         -o StrictHostKeyChecking=no \
@@ -26,4 +28,4 @@ VAL_HOSTNAME="$(echo $LINE4)"
 echo "\"$VAL_INBOUND\""
 echo "\"$VAL_OUTBOUND\""
 echo "\"$VAL_UPTIME\""
-echo ""\$VAL_HOSTNAME\""
+echo "\"$VAL_HOSTNAME\""
