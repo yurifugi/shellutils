@@ -12,8 +12,8 @@ ROUTER_RETURN=$(sshpass \
         | tr -s ' ')
         #  | \
         # xargs)"
-echo $ROUTER_RETURN
-#
+# echo $ROUTER_RETURN
+
 LINE1=$(echo "$ROUTER_RETURN" | cut -d"\\" -f4)
 LINE2=$(echo "$ROUTER_RETURN" | cut -d"\\" -f6)
 LINE3=$(echo "$ROUTER_RETURN" | cut -d"\\" -f7)
