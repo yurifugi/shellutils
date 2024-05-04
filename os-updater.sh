@@ -1,3 +1,9 @@
+# os-updater.sh
+# Run it via crontab 
+# Edit crontab for root user
+# Add the line
+# 7 16 * * * /usr/local/bin/os-updater.sh >/dev/null 2>&1
+
 #!/usr/bin/env bash
 
 /usr/bin/logger -p local0.notice ${0##*/}[$$] "Started" 
