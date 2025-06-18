@@ -3,7 +3,7 @@
 #set -x 
 
 SOURCES_LIST=("ifconfig.me/ip" "icanhazip.com")
-LOGFILE="$HOME/Desktop/myip.out"
+LOGFILE="$HOME/Desktop/logs/myip.out"
 TIMESTAMP=$(date +"%Y-%m-%d-%H:%M")
 
 # echo "TIMESTAMP=$TIMESTAMP"
@@ -17,7 +17,7 @@ do
     if [[ $MY_IP =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]
     then
         # echo "Writing $TIMESTAMP $MY_IP to $LOGFILE"
-        echo "$TIMESTAMP $MY_IP" >> "$LOGFILE"
+        echo "$TIMESTAMP $MY_IP" #>> "$LOGFILE"
         exit 1
     fi
 done
